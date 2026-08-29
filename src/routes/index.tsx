@@ -30,11 +30,9 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const cards = [
-  { img: cladding, s: services[0] },
-  { img: glazing, s: services[1] },
-  { img: doors, s: services[2] },
-];
+const cardImgs = [cladding, glazing, doors];
+const cards = services.slice(0, 3).map((s, i) => ({ img: cardImgs[i]!, s }));
+
 
 function Home() {
   return (
