@@ -68,7 +68,7 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div className="flex items-stretch justify-between border-t border-brand-line">
+      <div className="flex min-h-16 items-stretch justify-between border-t border-brand-line">
         <span className="hidden items-center px-6 text-sm font-semibold tracking-[0.2em] lg:flex">
           {company.tagline}
         </span>
