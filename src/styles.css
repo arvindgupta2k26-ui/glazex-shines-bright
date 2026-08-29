@@ -166,3 +166,118 @@
   }
 
 }
+
+/* ---------- Gradients, shadows & motion ---------- */
+:root {
+  --gradient-hero: linear-gradient(
+    120deg,
+    color-mix(in oklab, var(--brand-deep) 92%, transparent) 0%,
+    color-mix(in oklab, var(--brand) 78%, transparent) 45%,
+    color-mix(in oklab, var(--accent) 26%, transparent) 100%
+  );
+  --gradient-brand: linear-gradient(135deg, var(--brand-deep), var(--brand-tint));
+  --gradient-gold: linear-gradient(90deg, var(--accent), oklch(0.88 0.11 95));
+  --gradient-surface: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--brand) 5%, var(--background)),
+    var(--background)
+  );
+  --shadow-elegant: 0 18px 45px -22px color-mix(in oklab, var(--brand) 55%, transparent);
+  --shadow-lift: 0 28px 60px -26px color-mix(in oklab, var(--brand) 70%, transparent);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility bg-gradient-hero {
+  background-image: var(--gradient-hero);
+}
+@utility bg-gradient-brand {
+  background-image: var(--gradient-brand);
+}
+@utility bg-gradient-gold {
+  background-image: var(--gradient-gold);
+}
+@utility bg-gradient-surface {
+  background-image: var(--gradient-surface);
+}
+@utility text-gradient-gold {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility card-lift {
+  transition:
+    transform 0.5s var(--ease-soft),
+    box-shadow 0.5s var(--ease-soft);
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-soft),
+    transform 0.9s var(--ease-soft);
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility hover-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 100%;
+    background-image: var(--gradient-gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--ease-soft);
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes glazex-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes glazex-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes glazex-slow-zoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+@utility animate-float {
+  animation: glazex-float 6s ease-in-out infinite;
+}
+@utility animate-slow-zoom {
+  animation: glazex-slow-zoom 12s var(--ease-soft) forwards;
+}
+@utility animate-shine {
+  background-size: 200% 100%;
+  animation: glazex-shine 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .animate-float, .animate-slow-zoom, .animate-shine { animation: none; }
+}
