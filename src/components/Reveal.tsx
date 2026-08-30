@@ -54,6 +54,7 @@ export function Reveal({
 
   return (
     <Tag
+      {...rest}
       ref={ref}
       className={cn("reveal", visible && "is-visible", className)}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
