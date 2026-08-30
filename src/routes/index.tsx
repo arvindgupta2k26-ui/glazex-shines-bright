@@ -109,7 +109,7 @@ function Home() {
               More About Us <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-px self-start bg-border">
+          <Reveal className="grid grid-cols-2 gap-px self-start bg-border shadow-elegant">
             {stats.map((s) => (
               <div key={s.label} className="card-lift bg-background p-8">
                 <p className="text-4xl font-bold text-primary">{s.value}</p>
@@ -117,7 +117,7 @@ function Home() {
                 <p className="text-sm text-muted-foreground">{s.sub}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -127,8 +127,9 @@ function Home() {
             Comprehensive Facade & Architectural Solutions
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {cards.map(({ img, s }) => (
-              <article key={s.slug} className="card-lift overflow-hidden bg-background">
+            {cards.map(({ img, s }, i) => (
+              <Reveal key={s.slug} delay={i * 120}>
+              <article className="card-lift overflow-hidden bg-background">
                 <img
                   src={img}
                   alt={s.title}
@@ -149,14 +150,15 @@ function Home() {
                   </Link>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
           <div className="mt-10 grid gap-px bg-border md:grid-cols-3">
-            {services.slice(3).map((s) => (
-              <div key={s.slug} className="card-lift bg-background p-7">
+            {services.slice(3).map((s, i) => (
+              <Reveal key={s.slug} delay={i * 100} className="card-lift bg-background p-7">
                 <h3 className="text-base font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
