@@ -18,12 +18,15 @@ export function Reveal({
   className,
   delay = 0,
   as: Tag = "div",
+  ...rest
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
   as?: ElementType;
+  [key: string]: unknown;
 }) {
+
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
 
