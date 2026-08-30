@@ -265,6 +265,10 @@
   from { transform: scale(1.08); }
   to { transform: scale(1); }
 }
+@keyframes glazex-page-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
 
 @utility animate-float {
   animation: glazex-float 6s ease-in-out infinite;
@@ -276,8 +280,20 @@
   background-size: 200% 100%;
   animation: glazex-shine 6s linear infinite;
 }
+@utility animate-page-in {
+  animation: glazex-page-in 0.55s var(--ease-soft) both;
+  will-change: opacity, transform;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .animate-float, .animate-slow-zoom, .animate-shine { animation: none; }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .animate-float,
+  .animate-slow-zoom,
+  .animate-shine,
+  .animate-page-in { animation: none !important; }
+  .card-lift { transition: none !important; }
+  .card-lift:hover { transform: none !important; }
+  .hover-underline::after { transition: none !important; }
+  * { scroll-behavior: auto !important; }
 }
+
