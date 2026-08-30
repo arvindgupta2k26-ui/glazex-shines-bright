@@ -3,6 +3,7 @@ import { company, stats } from "@/lib/company";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/Reveal";
 import cladding from "@/assets/svc-cladding.jpg";
 
 export const Route = createFileRoute("/about-us")({
@@ -46,7 +47,7 @@ function About() {
           loading="lazy"
           width={900}
           height={600}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover shadow-elegant"
         />
         <div>
           <h2 className="text-3xl font-bold md:text-4xl">{company.legal}</h2>
@@ -62,7 +63,7 @@ function About() {
           </p>
           <div className="mt-8 grid grid-cols-2 gap-px bg-border">
             {stats.map((s) => (
-              <div key={s.label} className="bg-background p-6">
+              <div key={s.label} className="card-lift bg-background p-6">
                 <p className="text-3xl font-bold text-primary">{s.value}</p>
                 <p className="mt-2 text-sm font-semibold">{s.label}</p>
               </div>
@@ -71,15 +72,15 @@ function About() {
         </div>
       </section>
 
-      <section className="bg-secondary py-20">
+      <section className="bg-gradient-surface py-20">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl font-bold md:text-4xl">How We Work</h2>
           <div className="mt-10 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
-            {values.map((v) => (
-              <div key={v.t} className="bg-background p-8">
+            {values.map((v, i) => (
+              <Reveal key={v.t} delay={i * 100} className="card-lift bg-background p-8">
                 <h3 className="text-lg font-bold">{v.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.d}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

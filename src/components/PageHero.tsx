@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 export function PageHero({ eyebrow, title, crumb }: { eyebrow: string; title: string; crumb: string }) {
   return (
-    <section className="bg-brand-deep text-brand-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-20">
+    <section className="relative isolate overflow-hidden bg-gradient-brand text-brand-foreground">
+      <div className="animate-page-in mx-auto max-w-7xl px-6 py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.35em] opacity-75">{eyebrow}</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl">
           {title}

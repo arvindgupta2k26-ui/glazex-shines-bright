@@ -3,7 +3,7 @@ import { company, services } from "@/lib/company";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand text-brand-foreground">
+    <footer className="bg-gradient-brand text-brand-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="text-3xl font-bold tracking-tight">{company.name}</p>
@@ -19,7 +19,7 @@ export function SiteFooter() {
           <ul className="mt-5 space-y-2 text-sm opacity-85">
             {services.map((s) => (
               <li key={s.slug}>
-                <Link to="/services" hash={s.slug} className="hover:opacity-100">
+                <Link to="/services" hash={s.slug} className="hover-underline inline-block hover:opacity-100">
                   {s.title}
                 </Link>
               </li>
@@ -62,7 +62,7 @@ export function SiteFooter() {
           </ul>
           <Link
             to="/contact-us"
-            className="mt-6 inline-flex bg-brand-deep px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-accent hover:text-accent-foreground"
+            className="mt-6 inline-flex bg-gradient-gold animate-shine text-accent-foreground px-6 py-3 text-xs font-semibold uppercase tracking-widest transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             Request a Quote
           </Link>
