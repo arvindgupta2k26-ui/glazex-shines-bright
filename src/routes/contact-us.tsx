@@ -6,6 +6,7 @@ import { company, services } from "@/lib/company";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/contact-us")({
   head: () => ({
@@ -84,8 +85,8 @@ function Contact() {
               title: "Business Hours",
               lines: company.hours.map((h) => `${h.d}: ${h.t}`),
             },
-          ].map(({ icon: Icon, title, lines, href }) => (
-            <div key={title} className="border-t-2 border-primary bg-secondary p-8">
+          ].map(({ icon: Icon, title, lines, href }, i) => (
+            <Reveal key={title} delay={i * 110} className="card-lift border-t-2 border-primary bg-secondary p-8">
               <Icon className="h-6 w-6 text-primary" />
               <h2 className="mt-4 text-sm font-bold uppercase tracking-widest">{title}</h2>
               <div className="mt-3 space-y-1 text-sm text-muted-foreground">
@@ -101,7 +102,7 @@ function Contact() {
                   </p>
                 ))}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
@@ -140,7 +141,7 @@ function Contact() {
               </label>
               <button
                 type="submit"
-                className="bg-primary px-9 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-brand-deep"
+                className="bg-gradient-brand px-9 py-4 text-sm font-semibold uppercase tracking-wide text-primary-foreground shadow-elegant transition-transform hover:-translate-y-0.5"
               >
                 Send Message
               </button>

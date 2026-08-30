@@ -50,7 +50,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-brand text-brand-foreground">
+    <header className="sticky top-0 z-50 bg-brand text-brand-foreground shadow-elegant">
       <div className="hidden items-stretch justify-between lg:flex">
         <Link to="/" className="flex items-center gap-3 px-6 py-3">
           <span className="flex h-11 w-11 items-center justify-center border border-brand-line text-lg font-bold">
@@ -81,7 +81,7 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className="text-sm font-medium uppercase tracking-wide opacity-90 transition-opacity hover:opacity-100 [&.active]:opacity-100 [&.active]:underline [&.active]:underline-offset-8"
+              className="hover-underline text-sm font-medium uppercase tracking-wide opacity-90 transition-opacity hover:opacity-100 [&.active]:opacity-100 [&.active]:underline [&.active]:underline-offset-8"
             >
               {n.label}
             </Link>

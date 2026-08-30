@@ -4,6 +4,7 @@ import { services } from "@/lib/company";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/Reveal";
 import cladding from "@/assets/svc-cladding.jpg";
 import glazing from "@/assets/svc-glazing.jpg";
 import doors from "@/assets/svc-doors.jpg";
@@ -43,7 +44,8 @@ function Services() {
 
       <section className="mx-auto max-w-7xl space-y-16 px-6 py-20">
         {services.map((s, i) => (
-          <article
+          <Reveal
+            as="article"
             key={s.slug}
             id={s.slug}
             className={`grid scroll-mt-40 items-center gap-10 lg:grid-cols-2 ${
@@ -56,7 +58,7 @@ function Services() {
               loading="lazy"
               width={900}
               height={600}
-              className="h-72 w-full object-cover"
+              className="h-72 w-full object-cover shadow-elegant"
             />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
@@ -67,12 +69,12 @@ function Services() {
               <p className="mt-3 leading-relaxed text-muted-foreground">{s.body}</p>
               <Link
                 to="/contact-us"
-                className="mt-6 inline-flex items-center gap-3 bg-primary px-7 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-brand-deep"
+                className="mt-6 inline-flex items-center gap-3 bg-gradient-brand px-7 py-3 text-sm font-semibold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-brand-deep"
               >
                 Enquire <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
-          </article>
+          </Reveal>
         ))}
       </section>
 
