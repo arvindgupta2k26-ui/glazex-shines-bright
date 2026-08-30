@@ -7,6 +7,7 @@ import doors from "@/assets/svc-doors.jpg";
 import { company, services, stats } from "@/lib/company";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -45,11 +46,11 @@ function Home() {
           alt="Glass curtain wall facade of a modern tower"
           width={1920}
           height={1080}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-brand-deep/70" />
+        <div className="absolute inset-0 bg-gradient-hero" />
         <div className="relative mx-auto max-w-7xl px-6 py-28 text-brand-foreground md:py-40">
-          <h1 className="max-w-3xl text-4xl font-bold leading-[1.1] md:text-6xl">
+          <h1 className="reveal is-visible max-w-3xl text-4xl font-bold leading-[1.1] md:text-6xl">
             Building Better Facades for a Changing Skyline
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed opacity-90 md:text-lg">
@@ -110,7 +111,7 @@ function Home() {
           </div>
           <div className="grid grid-cols-2 gap-px self-start bg-border">
             {stats.map((s) => (
-              <div key={s.label} className="bg-background p-8">
+              <div key={s.label} className="card-lift bg-background p-8">
                 <p className="text-4xl font-bold text-primary">{s.value}</p>
                 <p className="mt-3 font-semibold">{s.label}</p>
                 <p className="text-sm text-muted-foreground">{s.sub}</p>
@@ -120,21 +121,21 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-secondary py-20">
+      <section className="bg-gradient-surface py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="max-w-2xl text-3xl font-bold md:text-4xl">
+          <h2 className="reveal is-visible max-w-2xl text-3xl font-bold md:text-4xl">
             Comprehensive Facade & Architectural Solutions
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {cards.map(({ img, s }) => (
-              <article key={s.slug} className="bg-background">
+              <article key={s.slug} className="card-lift overflow-hidden bg-background">
                 <img
                   src={img}
                   alt={s.title}
                   loading="lazy"
                   width={900}
                   height={600}
-                  className="h-56 w-full object-cover"
+                  className="h-56 w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
                 <div className="p-7">
                   <h3 className="text-lg font-bold">{s.title}</h3>
@@ -152,7 +153,7 @@ function Home() {
           </div>
           <div className="mt-10 grid gap-px bg-border md:grid-cols-3">
             {services.slice(3).map((s) => (
-              <div key={s.slug} className="bg-background p-7">
+              <div key={s.slug} className="card-lift bg-background p-7">
                 <h3 className="text-base font-bold">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
               </div>
@@ -161,7 +162,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-brand text-brand-foreground">
+      <section className="bg-gradient-brand text-brand-foreground">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 px-6 py-14">
           <div>
             <h2 className="text-2xl font-bold md:text-3xl">Planning a facade project?</h2>
@@ -171,7 +172,7 @@ function Home() {
           </div>
           <Link
             to="/contact-us"
-            className="bg-accent px-9 py-4 text-sm font-semibold uppercase tracking-wide text-accent-foreground"
+            className="bg-gradient-gold animate-shine px-9 py-4 text-sm font-semibold uppercase tracking-wide text-accent-foreground shadow-elegant"
           >
             Request a Quote
           </Link>
